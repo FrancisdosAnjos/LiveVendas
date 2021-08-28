@@ -759,6 +759,6 @@ public class TelaProduto extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Logos/log.png"))); //To change body of generated methods, choose Tools | Templates.
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Logos/shopping-cart.png"))); //To change body of generated methods, choose Tools | Templates.
     }
 }
