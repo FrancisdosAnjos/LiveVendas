@@ -777,6 +777,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setIcont() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Logos/shopping-cart.jpg"))); //To change body of generated methods, choose Tools | Templates.
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Logos/shopping-cart.png"))); //To change body of generated methods, choose Tools | Templates.
     }
 }
