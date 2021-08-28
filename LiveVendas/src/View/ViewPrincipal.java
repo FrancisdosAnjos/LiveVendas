@@ -127,14 +127,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Vendas e Controle de Estoque » Live Vendas Versão 01.019");
 
-        uJPanelImagem1.setImagem(new java.io.File("C:\\Users\\Live Digital\\Documents\\NetBeansProjects\\LiveVendas019.1\\src\\Logos\\telavendas2.png"));
+        uJPanelImagem1.setImagem(new java.io.File("C:\\xampp\\htdocs\\LiveVendas\\LiveVendas\\src\\Logos\\shopping-cart-logo.jpg"));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 51, 51))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 63, 127));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jbClientes.setBackground(new java.awt.Color(51, 51, 51));
-        jbClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbClientes.setForeground(new java.awt.Color(255, 255, 255));
+        jbClientes.setBackground(new java.awt.Color(255, 255, 255));
+        jbClientes.setFont(new java.awt.Font("Cabin", 1, 14)); // NOI18N
         jbClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icons8_Team_32.png"))); // NOI18N
         jbClientes.setText("Clientes");
         jbClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -143,9 +142,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbProdutos.setBackground(new java.awt.Color(51, 51, 51));
-        jbProdutos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbProdutos.setForeground(new java.awt.Color(255, 255, 255));
+        jbProdutos.setBackground(new java.awt.Color(255, 255, 255));
+        jbProdutos.setFont(new java.awt.Font("Cabin", 1, 14)); // NOI18N
         jbProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icons8_Product_32.png"))); // NOI18N
         jbProdutos.setText("Produtos");
         jbProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -154,9 +152,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        jbUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jbUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        jbUsuario.setFont(new java.awt.Font("Cabin", 1, 14)); // NOI18N
         jbUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icons8_Male_User_32.png"))); // NOI18N
         jbUsuario.setText("Usuários");
         jbUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -165,9 +162,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbVendas.setBackground(new java.awt.Color(51, 51, 51));
-        jbVendas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbVendas.setForeground(new java.awt.Color(255, 255, 255));
+        jbVendas.setBackground(new java.awt.Color(255, 255, 255));
+        jbVendas.setFont(new java.awt.Font("Cabin", 1, 14)); // NOI18N
         jbVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icons8_Shopping_Cart_32.png"))); // NOI18N
         jbVendas.setText("Vendas");
         jbVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -176,9 +172,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbPDV.setBackground(new java.awt.Color(51, 51, 51));
-        jbPDV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbPDV.setForeground(new java.awt.Color(255, 255, 255));
+        jbPDV.setBackground(new java.awt.Color(255, 255, 255));
+        jbPDV.setFont(new java.awt.Font("Cabin", 1, 14)); // NOI18N
         jbPDV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icons8_Buying_32.png"))); // NOI18N
         jbPDV.setText("PDV");
         jbPDV.addActionListener(new java.awt.event.ActionListener() {
@@ -187,9 +182,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbProforma.setBackground(new java.awt.Color(51, 51, 51));
-        jbProforma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jbProforma.setForeground(new java.awt.Color(255, 255, 255));
+        jbProforma.setBackground(new java.awt.Color(255, 255, 255));
+        jbProforma.setFont(new java.awt.Font("Cabin", 1, 14)); // NOI18N
         jbProforma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/icons8_Add_File_32.png"))); // NOI18N
         jbProforma.setText("Factura Proforma");
         jbProforma.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +232,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
