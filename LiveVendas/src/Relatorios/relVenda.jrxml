@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relVenda" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ecb39262-e554-4b5e-99cf-752f673397d7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="243"/>
+	<style name="Title" forecolor="#000000" fontName="Arial Narrow" fontSize="28"/>
+	<parameter name="idvendas" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_cliente.`pk_idcliente` AS tbl_cliente_pk_idcliente,
+     tbl_cliente.`nome` AS tbl_cliente_nome,
+     tbl_cliente.`endereco` AS tbl_cliente_endereco,
+     tbl_cliente.`bairro` AS tbl_cliente_bairro,
+     tbl_cliente.`cidade` AS tbl_cliente_cidade,
+     tbl_cliente.`provincia` AS tbl_cliente_provincia,
+     tbl_cliente.`telefone` AS tbl_cliente_telefone,
+     tbl_cliente.`email` AS tbl_cliente_email,
+     tbl_cliente.`nif` AS tbl_cliente_nif,
+     tbl_vendas.`pk_idvendas` AS tbl_vendas_pk_idvendas,
+     tbl_vendas.`datavenda` AS tbl_vendas_datavenda,
+     tbl_vendas.`valorliquido` AS tbl_vendas_valorliquido,
+     tbl_vendas.`valorbruto` AS tbl_vendas_valorbruto,
+     tbl_vendas.`desconto` AS tbl_vendas_desconto,
+     tbl_vendas_produtos.`pk_id_venda_produto` AS tbl_vendas_produtos_pk_id_venda_produto,
+     tbl_vendas_produtos.`ven_pro_valor` AS tbl_vendas_produtos_ven_pro_valor,
+     tbl_vendas_produtos.`ven_pro_quantidade` AS tbl_vendas_produtos_ven_pro_quantidade,
+     tbl_produto.`pk_idproduto` AS tbl_produto_pk_idproduto,
+     tbl_produto.`cod_produto` AS tbl_produto_cod_produto,
+     tbl_produto.`nome` AS tbl_produto_nome,
+     tbl_produto.`valor` AS tbl_produto_valor,
+     tbl_produto.`estoque` AS tbl_produto_estoque,
+     tbl_produto.`fornecedor` AS tbl_produto_fornecedor,
+(tbl_vendas_produtos.`ven_pro_quantidade`*tbl_vendas_produtos.`ven_pro_valor`) AS total
+FROM
+     `tbl_cliente` tbl_cliente INNER JOIN `tbl_vendas` tbl_vendas ON tbl_cliente.`pk_idcliente` = tbl_vendas.`fk_cliente`
+     INNER JOIN `tbl_vendas_produtos` tbl_vendas_produtos ON tbl_vendas.`pk_idvendas` = tbl_vendas_produtos.`fk_vendas`
+     INNER JOIN `tbl_produto` tbl_produto ON tbl_vendas_produtos.`fk_produto` = tbl_produto.`pk_idproduto` where tbl_vendas_produtos.`fk_vendas`=$P{idvendas}]]>
+	</queryString>
+	<field name="tbl_cliente_pk_idcliente" class="java.math.BigInteger"/>
+	<field name="tbl_cliente_nome" class="java.lang.String"/>
+	<field name="tbl_cliente_endereco" class="java.lang.String"/>
+	<field name="tbl_cliente_bairro" class="java.lang.String"/>
+	<field name="tbl_cliente_cidade" class="java.lang.String"/>
+	<field name="tbl_cliente_provincia" class="java.lang.String"/>
+	<field name="tbl_cliente_telefone" class="java.lang.String"/>
+	<field name="tbl_cliente_email" class="java.lang.String"/>
+	<field name="tbl_cliente_nif" class="java.lang.String"/>
+	<field name="tbl_vendas_pk_idvendas" class="java.math.BigInteger"/>
+	<field name="tbl_vendas_datavenda" class="java.sql.Date"/>
+	<field name="tbl_vendas_valorliquido" class="java.lang.Double"/>
+	<field name="tbl_vendas_valorbruto" class="java.lang.Double"/>
+	<field name="tbl_vendas_desconto" class="java.lang.Double"/>
+	<field name="tbl_vendas_produtos_pk_id_venda_produto" class="java.math.BigInteger"/>
+	<field name="tbl_vendas_produtos_ven_pro_valor" class="java.lang.Double"/>
+	<field name="tbl_vendas_produtos_ven_pro_quantidade" class="java.lang.Integer"/>
+	<field name="tbl_produto_pk_idproduto" class="java.math.BigInteger"/>
+	<field name="tbl_produto_cod_produto" class="java.lang.String"/>
+	<field name="tbl_produto_nome" class="java.lang.String"/>
+	<field name="tbl_produto_valor" class="java.lang.Double"/>
+	<field name="tbl_produto_estoque" class="java.lang.Integer"/>
+	<field name="tbl_produto_fornecedor" class="java.lang.String"/>
+	<field name="total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="274" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="313" y="10" width="135" height="20" uuid="514c7903-b761-4424-9fa3-8e510608eafc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Original]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="313" y="30" width="82" height="25" uuid="40f5ea7d-f252-4aef-a29b-fdaa0ac543fd"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Factura Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="313" y="55" width="31" height="20" uuid="2f9bb47a-e06f-4208-800f-3089736345b9"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-3" y="273" width="554" height="1" uuid="8c969922-9fda-4348-baf0-6026ac44ab05"/>
+				<graphicElement>
+					<pen lineWidth="1.75"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Title" x="344" y="55" width="100" height="20" uuid="5989fa6f-9928-4725-89c9-7dd7768aba79"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_datavenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Title" x="395" y="30" width="17" height="20" uuid="433bf9b4-78b9-4ace-a0a6-24bb952bdf4c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_pk_idvendas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="413" y="30" width="45" height="20" uuid="51b9d4c3-c5b1-4297-bf41-20c0e9ed3694"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[/ 2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="313" y="89" width="44" height="20" uuid="89351df7-612f-473a-97e6-9a6d276765de"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Title" x="370" y="89" width="308" height="20" uuid="0bde8afe-bea4-4ed7-a75e-4c899cb10232"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cliente_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Title" x="354" y="89" width="13" height="20" uuid="b67f26bb-9346-4301-848e-2da26d12cd2c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cliente_pk_idcliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="315" y="114" width="55" height="20" uuid="34de98a3-e840-49e4-b930-db40ee7a44dd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Title" x="370" y="114" width="308" height="20" uuid="f156065b-931b-4ab4-ba99-1c2b7ed4f4fe"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cliente_endereco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="313" y="140" width="82" height="20" uuid="1689d354-7d3c-4f17-a5cc-1b39961ac6e0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Contribuiente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Title" mode="Transparent" x="395" y="140" width="198" height="20" uuid="6dc04cd2-0223-4b4c-aa6c-b7f4202672bc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cliente_nif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="315" y="166" width="66" height="20" uuid="548ec6a7-dce4-4492-a3fb-62f8fd49f40a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Title" x="381" y="166" width="120" height="20" uuid="6faf1b76-72ff-4964-bd97-cc7586b48ee9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_cliente_telefone}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="12" y="76" width="197" height="20" uuid="30a0e2c1-5412-4efa-bef9-11f0414dc3b4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rua da Marginal, Ilha de Luanda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="12" y="121" width="243" height="20" uuid="41a55705-2a9e-49df-b796-ce0f43179f9a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Telefone: 994 501 634 – 927 795 827 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="12" y="143" width="197" height="20" uuid="30554e29-fc74-434b-a6ac-94eb7a38cdab"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Contribuente: 5000454950]]></text>
+			</staticText>
+			<image>
+				<reportElement x="12" y="10" width="127" height="63" uuid="7644abad-afd1-4c22-8f81-88115d247cef"/>
+				<imageExpression><![CDATA["C:\\LiveVendas019.1\\src\\Relatorios\\001-Logop.fw.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="10" y="164" width="197" height="20" uuid="323003ae-50c3-427c-857a-13e4aea0dcb5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[comercial@livedigitall.com ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="12" y="97" width="197" height="20" uuid="6a977f75-d844-458d-bc26-bb331eeeedcd"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Luanda - Angola]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="0" y="0" width="556" height="19" backcolor="#CCCCCC" uuid="1d71d009-e189-4b4a-8231-72992699a1ce"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição do Pedido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="0" y="20" width="22" height="20" uuid="a00b01eb-7c90-455a-9714-621666d2115b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="514" y="20" width="44" height="20" uuid="abea8b33-e96e-48ee-bfac-00badafca5c9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[V. Final]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="26" y="20" width="68" height="20" uuid="6c7e22f8-1c21-45a1-8759-667e5780835f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cód. Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="427" y="20" width="21" height="20" uuid="1fab70bb-80f5-4eae-a768-2d75be7d487a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="144" y="20" width="100" height="20" uuid="2c3d1de7-ca46-4881-9290-ed94a02c5e32"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Designação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="465" y="20" width="39" height="20" uuid="3b5cc400-fa15-4a22-8375-97ceabc15622"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[V. Unit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="144" y="1" width="276" height="20" uuid="c1de574d-43b9-464f-b051-1706bab22f2a"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_produto_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="1" width="18" height="20" uuid="be20afbc-06e1-4425-bb92-6304b191ee25"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_produto_pk_idproduto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="1" width="115" height="20" uuid="3892052d-3eeb-4064-b019-ce9135aaed60"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_produto_cod_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="1" width="16" height="20" uuid="df045846-aa51-4b08-a2c0-c7f2aa624dae"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_produtos_ven_pro_quantidade}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="463" y="1" width="42" height="20" uuid="c41fd508-9c38-45cb-8e27-94b30edde640"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_produtos_ven_pro_valor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="514" y="1" width="41" height="20" uuid="65e289d7-e7de-40af-8dc4-c05fdca2dccc"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="315" y="25" width="118" height="20" uuid="11bb5919-f40a-4f60-9b32-9653d98f4d05"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desconto 0%:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="315" y="45" width="118" height="20" backcolor="#CCCCCC" uuid="0f69a219-e73e-420f-9942-d39308e752b5"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total a Pagar AOA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="315" y="5" width="118" height="20" backcolor="#FFFFFF" uuid="b424615b-9755-463a-8d6f-024f172d48cc"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Mercadorias AOA:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement style="Title" x="451" y="5" width="100" height="20" uuid="3993f344-4dba-4e3f-9a6f-88aecbef9138"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_valorbruto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Title" x="451" y="25" width="100" height="20" uuid="0a4681ed-6f4f-4c8a-9be4-b0d713754255"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_desconto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Title" x="451" y="45" width="100" height="20" uuid="eedf95c4-2aee-4054-8090-214b0642fb72"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_vendas_valorliquido}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="315" y="2" width="240" height="1" uuid="3f519183-e04a-480b-92e2-90f149ddf47c"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="134" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="1" y="88" width="554" height="20" backcolor="#CCCCCC" uuid="0eef563a-df5a-4d08-ac74-ae94b838bc3b"/>
+			</frame>
+			<line>
+				<reportElement x="1" y="3" width="555" height="1" uuid="4f70892e-0109-4aac-a94b-5ea26cd594bd"/>
+			</line>
+			<staticText>
+				<reportElement x="7" y="8" width="223" height="20" uuid="0cb4f762-1280-461f-bf65-97659ac52e84"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Live Digital – Comércio e Prestação de Serviço, Lda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="29" width="47" height="20" uuid="48f9ceaf-964f-4279-96b3-6ca9f9c080ea"/>
+				<textElement>
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<text><![CDATA[Marginal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="49" width="80" height="20" uuid="85019736-e187-4c08-aa98-270369bd0c32"/>
+				<textElement>
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<text><![CDATA[Luanda - Angola]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="68" width="140" height="20" uuid="089dabd6-8aa0-4737-87bb-4c0e6775687b"/>
+				<textElement>
+					<font fontName="Arial Narrow"/>
+				</textElement>
+				<text><![CDATA[Capital Social - 100.000,01]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="4" y="91" width="100" height="20" uuid="42839c64-cef3-4c98-82e2-a946c659e1dd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="91" width="64" height="20" uuid="1e164a0b-1232-4a06-baa1-5b21daca59e7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="508" y="91" width="40" height="20" uuid="85a25c90-63ce-4ac8-bd3d-d154dd002c6d"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="412" y="113" width="136" height="20" uuid="155d5da5-28ad-44f1-b02f-0a5bb85dcedc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[*** Processado por computador ***]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="113" width="136" height="20" uuid="7806c2b6-1a37-4663-ba6f-ac77e1b16e97"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota: Selo Pago Por Guia]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
